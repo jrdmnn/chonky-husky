@@ -12,40 +12,40 @@ if (!bestTime) {
 
 function preload() {
   game.preloadGame();
-  finalImage = loadImage("/assets/player/husky-end-big.png");
+  finalImage = loadImage("assets/player/husky-end-big.png");
 }
 
 function setup() {
   createCanvas(windowWidth, 600);
   game.setup();
   background = new Background();
-  song = loadSound("/assets/howl2-trim.mp3");
+  song = loadSound("assets/howl2-trim.mp3");
 }
 
 function draw() {
-  
- if (gameStart === true) {
-  document.getElementById("scorebox").style.visibility = "visible";
-  console.log(bestTime);
-  
-  if (points > bestTime) {
-    localStorage.setItem("fastestTime", points);
-    document.querySelector("#best").innerHTML = points;
-  }
 
-  if (lives > 0) {
-    game.drawingGame();
-    document.querySelector("#score").innerText = points;
+  if (gameStart === true) {
+    document.getElementById("scorebox").style.visibility = "visible";
+    console.log(bestTime);
+
+    if (points > bestTime) {
+      localStorage.setItem("fastestTime", points);
+      document.querySelector("#best").innerHTML = points;
+    }
+
+    if (lives > 0) {
+      game.drawingGame();
+      document.querySelector("#score").innerText = points;
       if (points > 0) {
         game.playerImg = game.playerImg2;
       }
-    } 
+    }
   }
-  if (lives <=0 ) {
+  if (lives <= 0) {
     game.drawingGame();
     game.playerImg = game.playerImg3;
     image(finalImage, 200, 0);
-    setTimeout(() => noLoop(), 500) ;
+    setTimeout(() => noLoop(), 500);
     document.querySelector(".game-over").style.visibility = "visible";
     // noLoop();
   }
