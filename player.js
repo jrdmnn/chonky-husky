@@ -15,7 +15,7 @@ class Player {
   jump() {
     this.jumps += 1;
     console.log(this.y);
-    
+
     if (this.y > 640) {
       song.play();
     }
